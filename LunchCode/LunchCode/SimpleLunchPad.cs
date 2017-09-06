@@ -1,4 +1,5 @@
 ﻿
+using Plugin.Vibrate;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace LunchCode
 {
     public class SimpleLunchPad : ContentPage
     {
+        static TimeSpan buttonVibrate = TimeSpan.FromMilliseconds(100);
         const int displayRow = 1;
         const int firstNumRow = 2;
         const int secondNumRow = 3;
@@ -185,13 +187,16 @@ namespace LunchCode
 
         private void EnterButton_Clicked(object sender, EventArgs e)
         {
-            if(IsPinCorrect)
+            
+            if (IsPinCorrect)
             {
+                var v = CrossVibrate.Current;
+                v.Vibration(TimeSpan.FromMilliseconds(1000));
                 DisplayAlert($"Great Job!!! {SettingManager.Name}", "You Did It, Keep Up The Good Work", "OK");
             }
             else
             {
-                DisplayAlert($"Opps Try Again {SettingManager.Name}", "You Are Doing Great, Try Again", "OK");
+                DisplayAlert($"Oppie Try Again, {SettingManager.Name}", "You Are Doing Great, Try Again", "OK");
             }
         }
 
@@ -226,6 +231,9 @@ namespace LunchCode
 
         private void AddNumber(string number)
         {
+            var v = CrossVibrate.Current;
+            v.Vibration(buttonVibrate); 
+            
             if (enteredValue.Text.Length == 1 && enteredValue.Text[0] == '0')
             {
                 enteredValue.Text = number;
