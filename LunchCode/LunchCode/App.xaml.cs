@@ -13,7 +13,7 @@ namespace LunchCode
 		{
 			InitializeComponent();
 
-			MainPage = new LunchCode.SimpleLunchPad();
+            MainPage = new MainPage(); // new LunchCode.SimpleLunchPad();
 		}
 
 		protected override void OnStart ()

@@ -81,13 +81,14 @@ namespace LunchCode
         Label enteredValue;
         private Button trainingButton;
         bool trainingMode = false;
+        string currentPin;
 
         public SimpleLunchPad()
         {
             Title = "LunchPad";
             BackgroundColor = Color.FromHex("#404040");
             BuildButtons();
-
+            currentPin = SettingManager.Pin.ToString();
 
             var controlGrid = new Grid { RowSpacing = 1, ColumnSpacing = 1 };
             controlGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
@@ -150,10 +151,12 @@ namespace LunchCode
             if(trainingMode)
             {
                 trainingButton.Text = "Training Mode: On";
+                ProcessTrainingMode();
             }
             else
             {
                 trainingButton.Text = "Training Mode: Off";
+                EnableAllButtons();
             }
         }
 
@@ -182,12 +185,20 @@ namespace LunchCode
 
         private void EnterButton_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if(IsPinCorrect)
+            {
+                DisplayAlert($"Great Job!!! {SettingManager.Name}", "You Did It, Keep Up The Good Work", "OK");
+            }
+            else
+            {
+                DisplayAlert($"Opps Try Again {SettingManager.Name}", "You Are Doing Great, Try Again", "OK");
+            }
         }
 
         private async void ClearButton_Clicked(object sender, EventArgs e)
         {
             enteredValue.Text = "0";
+            ProcessTrainingMode();
         }
 
         private Button AddNumberButton(string text, Style style)
@@ -222,6 +233,79 @@ namespace LunchCode
             else
             {
                 enteredValue.Text = $"{enteredValue.Text}{number}";
+            }
+            ProcessTrainingMode();
+        }
+
+        private void ProcessTrainingMode()
+        {
+            if(trainingMode)
+            {
+                if(IsPinCorrect)
+                {
+                    buttons.ForEach(x => x.IsEnabled = false);
+                    enterButton.IsEnabled = true;
+                }
+                else
+                {
+                    DisableAllWrongButtons();
+                    enterButton.IsEnabled = false;
+                }
+            }
+        }
+
+        private void EnableAllButtons()
+        {
+            buttons.ForEach(x => x.IsEnabled = true);
+            enterButton.IsEnabled = true;
+            clearButton.IsEnabled = true;
+        }
+
+        private void DisableAllWrongButtons()
+        {
+            var nextChar = GetNextNumber();
+            if(nextChar.HasValue)
+            {
+                var nextStr = nextChar.Value.ToString();
+                foreach (var button in buttons)
+                {
+                    if(String.Equals(button.Text, nextStr))
+                    {
+                        button.IsEnabled = true;
+                    }
+                    else
+                    {
+                        button.IsEnabled = false;
+                    }
+                }
+            }
+        }
+
+        private bool IsPinCorrect
+        {
+            get
+            {
+                return (String.Equals(enteredValue.Text, currentPin, StringComparison.OrdinalIgnoreCase));
+            }
+        }
+
+        private char? GetNextNumber()
+        {
+            if(String.IsNullOrWhiteSpace(currentPin))
+            {
+                return null;
+            }
+            if (enteredValue.Text.Length == 1 && enteredValue.Text[0] == '0')
+            {
+                return currentPin[0];
+            }
+            else
+            {
+                if(currentPin.Length > enteredValue.Text.Length)
+                {
+                    return currentPin[enteredValue.Text.Length];
+                }
+                return null;
             }
         }
     }
