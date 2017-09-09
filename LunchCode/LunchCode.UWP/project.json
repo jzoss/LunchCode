@@ -1,9 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.0",
     "Xam.Plugins.Settings": "3.0.1",
     "Xam.Plugins.Vibrate": "3.0.1",
-    "Xamarin.Forms": "2.3.4.224"
+    "Xamarin.Forms": "2.3.4.270"
   },
   "frameworks": {
     "uap10.0.15063": {}

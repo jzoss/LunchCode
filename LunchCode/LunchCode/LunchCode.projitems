@@ -12,9 +12,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ITextToSpeech.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MasterPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MasterPageItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RandomSaying.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Setting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SettingManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SimpleLunchPad.cs" />
@@ -24,5 +26,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)music\" />
   </ItemGroup>
 </Project>

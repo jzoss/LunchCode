@@ -1,4 +1,5 @@
 ﻿
+using Plugin.MediaManager;
 using Plugin.Vibrate;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace LunchCode
     public class SimpleLunchPad : ContentPage
     {
         static TimeSpan buttonVibrate = TimeSpan.FromMilliseconds(100);
+        ITextToSpeech speekAndSpell;
+        Random random = new Random();
         const int displayRow = 1;
         const int firstNumRow = 2;
         const int secondNumRow = 3;
@@ -82,7 +85,9 @@ namespace LunchCode
 
         Label enteredValue;
         private Button trainingButton;
+        private Button sayNumbersButton;
         bool trainingMode = false;
+        bool sayNumbers = false;
         string currentPin;
 
         public SimpleLunchPad()
@@ -91,6 +96,9 @@ namespace LunchCode
             BackgroundColor = Color.FromHex("#404040");
             BuildButtons();
             currentPin = SettingManager.Pin.ToString();
+            speekAndSpell = DependencyService.Get<ITextToSpeech>();
+            speekAndSpell.Speak("");
+            speekAndSpell.Speak("Would You Like To Play A Game?");
 
             var controlGrid = new Grid { RowSpacing = 1, ColumnSpacing = 1 };
             controlGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
@@ -114,8 +122,21 @@ namespace LunchCode
                 
             };
             controlGrid.Children.Add(trainingButton, 2, 0);
+
             trainingButton.Clicked += TrainingButton_Clicked;
             trainingButton.Clicked += Button_ClickedAnimate;
+
+            sayNumbersButton = new Button
+            {
+                Text = "Speak Numbers: Off",
+                TextColor = Color.White,
+                FontSize = 10,
+
+            };
+            controlGrid.Children.Add(sayNumbersButton, 1, 0);
+
+            sayNumbersButton.Clicked += SayNumbersButton_Clicked; 
+            sayNumbersButton.Clicked += Button_ClickedAnimate;
 
 
             enteredValue = new Label
@@ -145,6 +166,21 @@ namespace LunchCode
             //Grid.SetColumnSpan(zeroButton, 2);
 
             Content = controlGrid;
+        }
+
+        private void SayNumbersButton_Clicked(object sender, EventArgs e)
+        {
+            sayNumbers = !sayNumbers;
+            if (sayNumbers)
+            {
+                sayNumbersButton.Text = "Speak Numbers: On";
+                ProcessTrainingMode();
+            }
+            else
+            {
+                sayNumbersButton.Text = "Speak Numbers: Off";
+                EnableAllButtons();
+            }
         }
 
         private void TrainingButton_Clicked(object sender, EventArgs e)
@@ -185,23 +221,41 @@ namespace LunchCode
 
         }
 
-        private void EnterButton_Clicked(object sender, EventArgs e)
+        private async void EnterButton_Clicked(object sender, EventArgs e)
         {
-            
+            if (sayNumbers)
+            {
+                speekAndSpell.Speak("Enter");
+            }
+
             if (IsPinCorrect)
             {
                 var v = CrossVibrate.Current;
-                v.Vibration(TimeSpan.FromMilliseconds(1000));
+                speekAndSpell.Speak($"Great Job!!! {SettingManager.Name}");
+                speekAndSpell.Speak(RandomSaying.YouAreCompliment());
                 DisplayAlert($"Great Job!!! {SettingManager.Name}", "You Did It, Keep Up The Good Work", "OK");
+                //int randomNumber = random.Next(0, 5);
+                //Android.Net.Uri uri = Android.Net.Uri.Parse("android.resource://LunchCode.Android/raw/done1.mp3");
+                //await CrossMediaManager.Current.Play(uri.ToString());
+                v.Vibration(TimeSpan.FromMilliseconds(1000));
+                v.Vibration(TimeSpan.FromMilliseconds(1000));
+                enteredValue.Text = "0";
+                clearButton.IsEnabled = true;
+                ProcessTrainingMode();
             }
             else
             {
-                DisplayAlert($"Oppie Try Again, {SettingManager.Name}", "You Are Doing Great, Try Again", "OK");
+                speekAndSpell.Speak("Oh Noes!");
+                await DisplayAlert($"Oppie Try Again, {SettingManager.Name}", "You Are Doing Great, Try Again", "OK");
             }
         }
 
         private async void ClearButton_Clicked(object sender, EventArgs e)
         {
+            if (sayNumbers)
+            {
+                speekAndSpell.Speak("Clear");
+            }
             enteredValue.Text = "0";
             ProcessTrainingMode();
         }
@@ -242,6 +296,10 @@ namespace LunchCode
             {
                 enteredValue.Text = $"{enteredValue.Text}{number}";
             }
+            if(sayNumbers)
+            {
+                speekAndSpell.Speak(number);
+            }
             ProcessTrainingMode();
         }
 
@@ -253,6 +311,7 @@ namespace LunchCode
                 {
                     buttons.ForEach(x => x.IsEnabled = false);
                     enterButton.IsEnabled = true;
+                    clearButton.IsEnabled = false;
                 }
                 else
                 {
