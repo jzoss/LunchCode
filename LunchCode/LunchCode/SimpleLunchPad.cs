@@ -243,7 +243,7 @@ namespace LunchCode
             {
                 var v = CrossVibrate.Current;
                 Speak($"Great Job {SettingManager.Name}");
-                var saying = RandomSaying.YouAreCompliment();
+                var saying = RandomSaying.RandomFun();
                 Speak(saying);
                 DisplayAlert($"Great Job!!! {SettingManager.Name}", saying, "OK");
                 //int randomNumber = random.Next(0, 5);

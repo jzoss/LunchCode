@@ -326,7 +326,7 @@ namespace LunchCode
             "Giant Sable Antelope",
             "Giraffe",
             "Goats",
-            "Gold, Silver and Blue Monkeys",
+            "Gold, Silver and Blue Monkey",
             "Golden Eagle",
             "Golden Pheasant",
             "Gorillas",
@@ -334,12 +334,12 @@ namespace LunchCode
             "Great Bittern",
             "Great Crested Newt",
             "Great Green Macaw",
-            "Great White African Pelican Birds",
+            "Great White African Pelican Bird",
             "Great White Shark",
             "Greater Flamingo",
             "Greater Horseshoe Bat",
             "Greater Mouse-Eared Bat",
-            "Greater Spot-Nosed Monkeys",
+            "Greater Spot-Nosed Monkey",
             "Green Crabs",
             "Green Scarab Beetle",
             "Grevy’s Zebra",
@@ -364,11 +364,10 @@ namespace LunchCode
             "Hippopotamus",
             "Hobo Spider",
             "Honey Bee",
-            "Honey Bee Characteristics",
             "Hoopoe Birds",
             "Hornets",
             "Horses",
-            "Horseshoe Crabs",
+            "Horseshoe Crab",
             "House Centipede",
             "Howler Monkeys",
             "Humboldt Penguin",
@@ -383,13 +382,13 @@ namespace LunchCode
             "Jackal",
             "Jaguar",
             "Jambu Fruit Dove",
-            "Japanese Spider Crabs",
+            "Japanese Spider Crab",
             "Javan Rhinoceros",
             "Jellyfish",
             "Katipo Spider",
             "Kea Parrot",
             "Kestrel Bird",
-            "King Cobra Snakes",
+            "King Cobra Snake",
             "King Penguin",
             "Kinkajou",
             "Kittens",
@@ -434,37 +433,37 @@ namespace LunchCode
             "Mud Dauber Wasp",
             "Musk Ox",
             "Natterjack Toad",
-            "New World Monkeys",
+            "New World Monkey",
             "New World Tarantula Spider",
             "Northern Short-tailed Shrew",
             "Nurse Shark",
             "Ocelot",
             "Okapi",
             "Old World Monkeys",
-            "Old World Tarantula Spiders",
+            "Old World Tarantula Spider",
             "Opossums",
             "Orangutan",
-            "Orb Weaver Spiders",
+            "Orb Weaver Spider",
             "Oryx (Antelope)",
             "Osprey",
             "Ostrich Birds",
-            "Pantropical Spotted Dolphins",
+            "Pantropical Spotted Dolphin",
             "Paper Wasp",
             "Parasitic Bees",
             "Peafowl Peacock",
-            "Peccary (Javelina)",
+            "Peccary",
             "Penguin",
             "Peruvian Fox",
             "Pigs",
             "Pine Marten",
             "Piranha Fish",
             "Plains Zebra",
-            "Poison Arrow Frogs",
+            "Poison Arrow Frog",
             "Polar Bear",
             "Polecat",
             "Pollan Fish",
             "Porcupine",
-            "Potter Wasps",
+            "Potter Wasp",
             "Praying Mantis",
             "Preuss’s Monkey",
             "Puma",
@@ -476,7 +475,7 @@ namespace LunchCode
             "Rainbow Bee Eater",
             "Ratel",
             "Rattlesnakes",
-            "Red Back Jumping Spiders",
+            "Red Back Jumping Spider",
             "Red British Squirrel",
             "Red Fox",
             "Red Kangaroo",
@@ -490,9 +489,9 @@ namespace LunchCode
             "Rhinoceros Beetle",
             "Right Whales",
             "Risso’s Dolphin",
-            "Roborovski Hamsters",
+            "Roborovski Hamster",
             "Rockhopper Penguin",
-            "Rough-Toothed Dolphins",
+            "Rough-Toothed Dolphin",
             "Royal Penguin",
             "Sacred Ibis Bird",
             "Saki Monkeys",
@@ -519,7 +518,7 @@ namespace LunchCode
             "Snares Penguin",
             "Snow Leopard",
             "Snowshoe Hare",
-            "Solitary Bees",
+            "Solitary Bee",
             "Song Thrush",
             "Southern Short-tailed Shrew",
             "Spectacled Bear",
@@ -574,7 +573,7 @@ namespace LunchCode
             "White Stork Birds",
             "White-clawed Crayfish",
             "Wild Boar",
-            "Wild Rabbits",
+            "Wild Rabbit",
             "Wildebeest",
             "Winter White Russian Hamster",
             "Wolf Spider",
@@ -618,21 +617,103 @@ namespace LunchCode
             "Charming",
             "Sparky",
             "silly",
+            "climb", 
+            "skate",
+            "float",
+            "jump",
+
 
         };
+
+        private static string[] Actions = {
+            "climb",
+            "skate",
+            "float",
+            "jump",
+            "run",
+            "fly",
+            "sleep",
+            "listen",
+            "run",
+            "walk",
+            "jog",
+            "bike",
+            "skate",
+            "turn",
+            "twist",
+            "shout",
+            "jump",
+            "laugh",
+            "scream",
+            "play",
+            "swim",
+            "color",
+            "draw",
+            "paint",
+            "build",
+            "create",
+            "read",
+            "write",
+            "sing",
+            "joke",
+            "glue",
+            "sharpen",
+            "doodle",
+            "leave",
+            "enter",
+            "exit",
+            "wake up",
+            "sleep",
+            "skate",
+            "eat",
+            "drink",
+            "dance",
+            "taste",
+            "sneeze",
+            "cough",
+            "skip",
+            "ride"
+
+        };
+
 
         private static string[] Farewells = { "ADIOS!", "BYE!", "BYE-BYE!", "FAREWELL!", "GOODBYE!" };
 
 
+        public static string RandomFun(string name = "")
+        {
+            var sayingNum = random.Next(0,2);
+            if(sayingNum == 0)
+            {
+                return YouAreCompliment();
+            }
+            else
+            {
+                return ActionCompliment();
+            }
+        }
+
+        public static string ActionCompliment()
+        {
+            var animal = Animals[random.Next(0,Animals.Count)];
+            var compliment = Compliments[random2.Next(0,Compliments.Length)];
+            var connectingWord = "a";
+            if (StartsWithVowel(compliment))
+            {
+                connectingWord = "an";
+            }
+            return $"You {Actions[random2.Next(0,Actions.Length)]} like {connectingWord} {compliment} {animal}";
+        }
+
         public static string YouAreCompliment()
         {
-            var animal = Animals[random.Next(Animals.Count)];
+            var animal = Animals[random.Next(0,Animals.Count)];
             var connectingWord = "a";
             if (StartsWithVowel(animal))
             {
                 connectingWord = "an";
             }
-            return $"You are {Compliments[random2.Next(Compliments.Length)]} like {connectingWord} {animal}";
+            return $"You are {Compliments[random2.Next(0,Compliments.Length)]} like {connectingWord} {animal}";
         }
 
         private static bool StartsWithVowel(string s)
