@@ -1,5 +1,4 @@
-﻿
-using Plugin.MediaManager;
+﻿using Plugin.TextToSpeech;
 using Plugin.Vibrate;
 using System;
 using System.Collections.Generic;
@@ -90,6 +89,8 @@ namespace LunchCode
         bool sayNumbers = false;
         string currentPin;
 
+        private static bool started = false;
+
         public SimpleLunchPad()
         {
             Title = "LunchPad";
@@ -97,8 +98,12 @@ namespace LunchCode
             BuildButtons();
             currentPin = SettingManager.Pin.ToString();
             speekAndSpell = DependencyService.Get<ITextToSpeech>();
-            speekAndSpell.Speak("");
-            speekAndSpell.Speak("Would You Like To Play A Game?");
+            if (!started)
+            {
+                Speak("Would You Like To Play A Game?");
+                started = true;
+            }
+            //speekAndSpell.Speak("Would You Like To Play A Game?");
 
             var controlGrid = new Grid { RowSpacing = 1, ColumnSpacing = 1 };
             controlGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
@@ -168,6 +173,12 @@ namespace LunchCode
             Content = controlGrid;
         }
 
+
+        private async Task Speak(string text)
+        {
+            //speekAndSpell.Speak(text);
+            await CrossTextToSpeech.Current.Speak(text, speakRate: 1f);
+        }
         private void SayNumbersButton_Clicked(object sender, EventArgs e)
         {
             sayNumbers = !sayNumbers;
@@ -225,15 +236,16 @@ namespace LunchCode
         {
             if (sayNumbers)
             {
-                speekAndSpell.Speak("Enter");
+                Speak("Enter");
             }
 
             if (IsPinCorrect)
             {
                 var v = CrossVibrate.Current;
-                speekAndSpell.Speak($"Great Job!!! {SettingManager.Name}");
-                speekAndSpell.Speak(RandomSaying.YouAreCompliment());
-                DisplayAlert($"Great Job!!! {SettingManager.Name}", "You Did It, Keep Up The Good Work", "OK");
+                Speak($"Great Job {SettingManager.Name}");
+                var saying = RandomSaying.YouAreCompliment();
+                Speak(saying);
+                DisplayAlert($"Great Job!!! {SettingManager.Name}", saying, "OK");
                 //int randomNumber = random.Next(0, 5);
                 //Android.Net.Uri uri = Android.Net.Uri.Parse("android.resource://LunchCode.Android/raw/done1.mp3");
                 //await CrossMediaManager.Current.Play(uri.ToString());
@@ -245,7 +257,7 @@ namespace LunchCode
             }
             else
             {
-                speekAndSpell.Speak("Oh Noes!");
+                Speak("Oh Noes!");
                 await DisplayAlert($"Oppie Try Again, {SettingManager.Name}", "You Are Doing Great, Try Again", "OK");
             }
         }
@@ -254,7 +266,7 @@ namespace LunchCode
         {
             if (sayNumbers)
             {
-                speekAndSpell.Speak("Clear");
+                Speak("Clear");
             }
             enteredValue.Text = "0";
             ProcessTrainingMode();
@@ -298,7 +310,7 @@ namespace LunchCode
             }
             if(sayNumbers)
             {
-                speekAndSpell.Speak(number);
+                Speak(number);
             }
             ProcessTrainingMode();
         }

@@ -34,7 +34,9 @@ namespace LunchCode
             }
 
             nameEditor.Completed += NameEditor_Completed;
+            nameEditor.TextChanged += NameEditor_Completed;
             pinEditor.Completed += PinEditor_Completed;
+            pinEditor.TextChanged += PinEditor_Completed;
 
             layout.Children.Add(nameEditor);
             layout.Children.Add(pinEditor);

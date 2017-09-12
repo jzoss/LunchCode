@@ -16,6 +16,13 @@ namespace LunchCode
             var masterPageItems = new List<MasterPageItem>();
             masterPageItems.Add(new MasterPageItem
             {
+                Title = "Menu",
+                IconSource = "contacts.png",
+                TargetType = typeof(SimpleLunchPad)
+            });
+
+            masterPageItems.Add(new MasterPageItem
+            {
                 Title = "Pad",
                 IconSource = "contacts.png",
                 TargetType = typeof(SimpleLunchPad)
