@@ -35,10 +35,5 @@ import {JasperoAlertsModule, AlertSettings } from '@jaspero/ng2-alerts';
   bootstrap: [AppComponent, SettingsComponent]
 })
 export class AppModule {
-  options: AlertSettings  = {
-    overlay: true,
-    duration: 0,
-    showCloseButton: true
-  }
 
  }
