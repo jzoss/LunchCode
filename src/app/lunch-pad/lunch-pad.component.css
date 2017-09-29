@@ -1,0 +1,93 @@
+.lunch-pad
+{
+
+
+}
+.grid
+{
+  height: 100%;
+}
+.buttons
+{
+  /* max-height: 80%; */
+  height: 84%;
+}
+.top
+{
+  height: 15%;
+}
+
+
+.pad-button
+{
+  font-size: 6vw;
+  align-content: center;
+}
+
+.green-button
+{
+  background-color: #006400;
+  font-size: 6vw;
+  align-content: center;
+}
+.display-number
+{
+  font-size: 6vw;
+}
+
+.red-button
+{
+  background-color: #FF0000;
+  font-size: 6vw;
+  align-content: center;
+}
+
+.pad-button
+{
+  height: 90%;
+  width: 90%;
+
+}
+
+.content
+{
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+}
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  max-width: 90%;
+  background-color: #BEB7B7;
+  -webkit-box-shadow: 10px 10px 14px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 14px 3px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 14px 3px rgba(0,0,0,0.75);
+  border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  border: 0px solid #000000;
+
+}
+
+.Aligner-item {
+  /* min-width: 80%; */
+  height: 100%;
+  flex: 1;
+  overflow:visible;
+  /* max-width: 800px; */
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
