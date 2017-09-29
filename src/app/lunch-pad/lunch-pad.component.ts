@@ -42,8 +42,11 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
   set pin(value: string)
   {
-    this._pin = value.toString();
-    this.localStorageService.set('pin', value);
+    if(value != null)
+    {
+      this._pin = value.toString();
+      this.localStorageService.set('pin', this._pin);
+    }
   }
 
   get name(): string
