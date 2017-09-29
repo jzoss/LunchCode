@@ -114,7 +114,7 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
   }
 
   numberPush(num: number) {
-    this.vibrate(500);
+    this.vibrate(200);
     this.AddNumber(num.toString());
     console.log(num);
   }
