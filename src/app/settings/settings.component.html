@@ -1,15 +1,15 @@
-<h1 md-dialog-title>Hi {{data.name}}</h1>
-<div md-dialog-content>
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
   <p>What's is your child's name</p>
-  <md-form-field>
-    <input mdInput tabindex="1" [(ngModel)]="data.name">
-  </md-form-field>
+  <mat-form-field>
+    <input matInput  tabindex="1" [(ngModel)]="data.name">
+  </mat-form-field>
   <p>What is the Lunch PIN Code #</p>
-  <md-form-field>
-    <input mdInput type="number" tabindex="2" [(ngModel)]="data.pin">
-  </md-form-field>
+  <mat-form-field>
+    <input matInput type="number" tabindex="2" [(ngModel)]="data.pin">
+  </mat-form-field>
 </div>
-<div md-dialog-actions>
-  <button md-button [md-dialog-close]="data" tabindex="2">Ok</button>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
 </div>
 

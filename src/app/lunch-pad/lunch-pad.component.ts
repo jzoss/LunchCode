@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RandomSaying } from '../RandomSayings';
 
-import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatIcon} from '@angular/material';
 import {SettingsComponent} from '../settings/settings.component';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AlertsService } from '@jaspero/ng2-alerts';
@@ -61,7 +61,7 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-    public dialog: MdDialog,
+    public dialog: MatDialog,
     private _alert: AlertsService,
     private localStorageService: LocalStorageService) {
    // this.buttonsState = Array[true];
@@ -89,8 +89,11 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.pin = result.pin;
-      this.name = result.name;
+      if(result)
+      {
+        this.pin = result.pin;
+        this.name = result.name;
+      }
     });
   }
 

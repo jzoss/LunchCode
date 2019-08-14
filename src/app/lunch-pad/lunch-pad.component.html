@@ -1,65 +1,65 @@
 <div class="Aligner">
 <div class ="Aligner-item">
   <div class="top" >
-<md-grid-list cols="3" rowHeight="60px">
-    <md-grid-tile>  <button md-fab>
-        <md-icon class="md-24" (click)="openDialog()" aria-label="Settings">Setting</md-icon>
-      </button> </md-grid-tile>
-    <md-grid-tile> <md-slide-toggle [(ngModel)]="speakWords"
+<mat-grid-list cols="3" rowHeight="60px">
+    <mat-grid-tile>  <button mat-fab>
+        <mat-icon class="mat-24" (click)="openDialog()" aria-label="Settings">Setting</mat-icon>
+      </button> </mat-grid-tile>
+    <mat-grid-tile> <mat-slide-toggle [(ngModel)]="speakWords"
       class="example-margin"
       [color]="color"
       [checked]="speakWords">Speak
-  </md-slide-toggle></md-grid-tile>
-    <md-grid-tile>
-      <md-slide-toggle  (change) = "trainingModeToggle()"
+  </mat-slide-toggle></mat-grid-tile>
+    <mat-grid-tile>
+      <mat-slide-toggle  (change) = "trainingModeToggle()"
       class="example-margin"
       [color]="color"
       [checked]="checked">
-  </md-slide-toggle>Training Mode</md-grid-tile>
-    <md-grid-tile colspan ="3">
+  </mat-slide-toggle>Training Mode</mat-grid-tile>
+    <mat-grid-tile colspan ="3">
       <div class="display-number">{{curentEnteredValue}}</div>
-     </md-grid-tile>
-</md-grid-list>
+     </mat-grid-tile>
+</mat-grid-list>
 </div>
 <div class="buttons">
-    <md-grid-list class="grid" cols="3" rowHeight="fit">
-        <md-grid-tile>
-          <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[7]" (click)="numberPush(7)">7</button>
-        </md-grid-tile>
-        <md-grid-tile>
-            <button class="pad-button" md-raised-button  [disabled]="!numberButtonsState[8]" (click)="numberPush(8)">8</button>
-          </md-grid-tile>
-          <md-grid-tile>
-              <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[9]" (click)="numberPush(9)">9</button>
-            </md-grid-tile>
-        <md-grid-tile>
-          <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[4]" (click)="numberPush(4)">4</button>
-        </md-grid-tile>
-        <md-grid-tile>
-            <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[5]" (click)="numberPush(5)">5</button>
-        </md-grid-tile>
-        <md-grid-tile>
-            <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[6]" (click)="numberPush(6)">6</button>
-        </md-grid-tile>
-        <md-grid-tile>
-            <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[1]" (click)="numberPush(1)">1</button>
-        </md-grid-tile>
-        <md-grid-tile>
-            <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[2]" (click)="numberPush(2)">2</button>
-        </md-grid-tile>
-        <md-grid-tile>
-          <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[3]" (click)="numberPush(3)">3</button>
-        </md-grid-tile>
-        <md-grid-tile>
-            <button class="pad-button red-button" md-raised-button [disabled]="!clearButtonEnabled" (click)="clearPush()">Clear</button>
-        </md-grid-tile>
-        <md-grid-tile>
-            <button class="pad-button" md-raised-button [disabled]="!numberButtonsState[0]" (click)="numberPush(0)">0</button>
-        </md-grid-tile>
-        <md-grid-tile>
-          <button class="pad-button green-button" md-raised-button [disabled]="!enterButtonEnabled" (click)="enterPush()">Enter</button>
-        </md-grid-tile>
-  </md-grid-list>
+    <mat-grid-list class="grid" cols="3" rowHeight="fit">
+        <mat-grid-tile>
+          <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[7]" (click)="numberPush(7)">7</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="pad-button" mat-raised-button  [disabled]="!numberButtonsState[8]" (click)="numberPush(8)">8</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+              <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[9]" (click)="numberPush(9)">9</button>
+            </mat-grid-tile>
+        <mat-grid-tile>
+          <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[4]" (click)="numberPush(4)">4</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[5]" (click)="numberPush(5)">5</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[6]" (click)="numberPush(6)">6</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[1]" (click)="numberPush(1)">1</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[2]" (click)="numberPush(2)">2</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[3]" (click)="numberPush(3)">3</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="pad-button red-button" mat-raised-button [disabled]="!clearButtonEnabled" (click)="clearPush()">Clear</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="pad-button" mat-raised-button [disabled]="!numberButtonsState[0]" (click)="numberPush(0)">0</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button class="pad-button green-button" mat-raised-button [disabled]="!enterButtonEnabled" (click)="enterPush()">Enter</button>
+        </mat-grid-tile>
+  </mat-grid-list>
 </div>
 </div>
 

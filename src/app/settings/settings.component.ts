@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -10,8 +10,8 @@ import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 export class SettingsComponent implements OnInit {
 
   constructor(
-    public dialogRef: MdDialogRef<SettingsComponent>,
-    @Inject(MD_DIALOG_DATA) public data: any) { }
+    public dialogRef: MatDialogRef<SettingsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }
