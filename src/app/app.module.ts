@@ -9,6 +9,8 @@ import { SettingsComponent } from './settings/settings.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {JasperoAlertsModule, AlertSettings } from '@jaspero/ng-alerts';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {JasperoAlertsModule, AlertSettings } from '@jaspero/ng-alerts';
     MatInputModule,
     MatGridListModule,
     MatIconModule,
-    JasperoAlertsModule.forRoot()
+    JasperoAlertsModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   entryComponents: [SettingsComponent],
