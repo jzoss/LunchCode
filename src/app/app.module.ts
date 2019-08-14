@@ -8,7 +8,7 @@ import {MatInputModule, MatButtonModule, MatDialogModule, MatCheckboxModule, Mat
 import { SettingsComponent } from './settings/settings.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import {JasperoAlertsModule, AlertSettings } from '@jaspero/ng2-alerts';
+import {JasperoAlertsModule, AlertSettings } from '@jaspero/ng-alerts';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import {JasperoAlertsModule, AlertSettings } from '@jaspero/ng2-alerts';
     MatInputModule,
     MatGridListModule,
     MatIconModule,
-    JasperoAlertsModule
+    JasperoAlertsModule.forRoot()
   ],
   providers: [],
   entryComponents: [SettingsComponent],

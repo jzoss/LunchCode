@@ -22,7 +22,7 @@
     "@angular/platform-browser": "^8.2.2",
     "@angular/platform-browser-dynamic": "^8.2.2",
     "@angular/router": "^8.2.2",
-    "@jaspero/ng2-alerts": "0.0.7",
+    "@jaspero/ng-alerts": "^0.1.2",
     "angular-2-local-storage": "^3.0.2",
     "angular-vibrator": "^0.2.0",
     "core-js": "^3.2.1",

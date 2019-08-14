@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertSettings } from '@jaspero/ng2-alerts';
+import { AlertSettings } from '@jaspero/ng-alerts';
 
 @Component({
   selector: 'app-root',

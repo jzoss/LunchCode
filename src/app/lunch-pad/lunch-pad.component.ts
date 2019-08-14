@@ -4,7 +4,7 @@ import { RandomSaying } from '../RandomSayings';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatIcon} from '@angular/material';
 import {SettingsComponent} from '../settings/settings.component';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { AlertsService } from '@jaspero/ng2-alerts';
+import { AlertsService } from '@jaspero/ng-alerts';
 
 // export interface IWindow extends Window {
 //   webkitSpeechRecognition: any;
@@ -89,8 +89,7 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      if(result)
-      {
+      if(result) {
         this.pin = result.pin;
         this.name = result.name;
       }
