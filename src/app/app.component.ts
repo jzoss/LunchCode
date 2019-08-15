@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertSettings } from '@jaspero/ng-alerts';
+import { PwaService } from './pwa.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,12 @@ export class AppComponent {
   options: AlertSettings  = {
     overlay: true,
     duration: 0,
-    showCloseButton: true
+    showCloseButton: false,
+    overlayClickToClose : true
+
   };
+
+  constructor(public Pwa: PwaService) {}
+
 
 }

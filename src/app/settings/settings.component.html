@@ -11,5 +11,7 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
+  <button *ngIf="Pwa.promptEvent" mat-mini-fab color="primary" (click)="installPwa()">Install</button>
 </div>
+
 

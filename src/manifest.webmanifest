@@ -5,7 +5,8 @@
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/LunchCode/",
+  "prefer_related_applications" : false,
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
@@ -30,6 +31,11 @@
     {
       "src": "assets/icons/icon-152x152.png",
       "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/",
+      "sizes": "180x180",
       "type": "image/png"
     },
     {

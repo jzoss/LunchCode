@@ -88,7 +88,7 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+
       if(result) {
         this.pin = result.pin;
         this.name = result.name;
@@ -140,7 +140,7 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
       this.speak(`Great Job ${this.name}`);
       let saying = RandomSaying.RandomFun();
       this.speak(saying);
-      this._alert.create('success', saying, {duration: 0, overlay: true });
+      this._alert.create('success', saying);
       this.vibrate([200, 100, 200]);
       this.curentEnteredValue = '0';
       this.clearButtonEnabled = true;
@@ -149,7 +149,7 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
     else
     {
       this.speak('Oh Noes!');
-      this._alert.create('error', 'You Are Doing Great, Try Again', {duration: 0, overlay: true });
+      this._alert.create('error', 'You Are Doing Great, Try Again');
     }
   }
 

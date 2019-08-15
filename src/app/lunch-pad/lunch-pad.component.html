@@ -2,9 +2,12 @@
 <div class ="Aligner-item">
   <div class="top" >
 <mat-grid-list cols="3" rowHeight="60px">
-    <mat-grid-tile>  <button mat-fab>
-        <mat-icon class="mat-24" (click)="openDialog()" aria-label="Settings2">Setting</mat-icon>
-      </button> </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-fab (click)="openDialog()">
+        <mat-icon inline=true class="mat-24"  aria-label="Settings"></mat-icon>
+        <span>Settings</span>
+      </button>
+    </mat-grid-tile>
     <mat-grid-tile> <mat-slide-toggle [(ngModel)]="speakWords"
       class="example-margin"
       [color]="color"
@@ -16,9 +19,9 @@
       [color]="color"
       [checked]="checked">
   </mat-slide-toggle>Training Mode</mat-grid-tile>
-    <mat-grid-tile colspan ="3">
+    <!-- <mat-grid-tile colspan ="3">
       <div class="display-number">{{curentEnteredValue}}</div>
-     </mat-grid-tile>
+     </mat-grid-tile> -->
 </mat-grid-list>
 </div>
 <div class="buttons">
