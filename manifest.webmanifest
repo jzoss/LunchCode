@@ -6,6 +6,7 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/LunchCode/",
+  "prefer_related_applications" : false,
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
