@@ -10,6 +10,8 @@ import { PwaService } from '../pwa.service';
 })
 export class SettingsComponent implements OnInit {
 
+  saveSettings = false;
+
   constructor(
     public dialogRef: MatDialogRef<SettingsComponent>,public Pwa: PwaService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -19,6 +21,11 @@ export class SettingsComponent implements OnInit {
 
   installPwa(): void {
     this.Pwa.promptEvent.prompt();
+  }
+
+  onClearClicked()
+  {
+    this.dialogRef.close({name: null, pin: null, saveSettings : false });
   }
 
 }

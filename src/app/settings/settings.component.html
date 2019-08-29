@@ -9,8 +9,16 @@
     <input matInput type="number" tabindex="2" [(ngModel)]="data.pin">
   </mat-form-field>
 </div>
+<div>
+    <mat-checkbox class="example-margin" [(ngModel)]="data.saveSettings">Save settings in cache</mat-checkbox>
+    <mat-icon  inline="true" class="material-icons info" mdTooltipPosition="below"  matTooltipClass="saveTooltip"  matTooltip = "This will save the name and lunch number inside your browser or application. This is convenient for easy learning, but should be disabled on a shared device. The data is never sent over the internet." >
+        info
+        </mat-icon>
+      <!-- <p></p> -->
+  </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" tabindex="2">Save</button>
+  <button mat-raised-button color="accent" (click)="onClearClicked()" tabindex="2">Clear</button>
   <button *ngIf="Pwa.promptEvent" mat-mini-fab color="primary" (click)="installPwa()">Install</button>
 </div>
 

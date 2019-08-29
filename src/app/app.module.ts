@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LunchPadComponent } from './lunch-pad/lunch-pad.component';
 import {MatInputModule, MatButtonModule, MatDialogModule, MatCheckboxModule, MatSlideToggleModule,
-  MatGridListModule, MatIconModule} from '@angular/material';
+  MatGridListModule, MatIconModule, MatTooltipModule} from '@angular/material';
 import { SettingsComponent } from './settings/settings.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -34,6 +34,8 @@ import { environment } from '../environments/environment';
     MatInputModule,
     MatGridListModule,
     MatIconModule,
+    MatTooltipModule,
+    MatCheckboxModule,
     JasperoAlertsModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

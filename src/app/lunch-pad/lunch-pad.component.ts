@@ -23,10 +23,11 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
   synth = window.speechSynthesis;
   color = 'accent';
-  speakWords = false;
-  trainingMode = false;
+  _speakWords = false;
+  _trainingMode = false;
   checked = false;
   disabled = false;
+  _saveSettings = false;
   _pin: string;
   _name: string;
   curentEnteredValue = '0';
@@ -45,8 +46,30 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
     if(value != null)
     {
       this._pin = value.toString();
-      this.localStorageService.set('pin', this._pin);
+      if(this.saveSettings)
+      {
+        this.localStorageService.set('pin', this._pin);
+      }
     }
+    else{
+      this._pin = null;
+    }
+    if(!this.saveSettings)
+    {
+      this.localStorageService.remove('pin');
+    }
+
+  }
+
+  get saveSettings(): boolean
+  {
+    return this._saveSettings;
+  }
+
+  set saveSettings(value: boolean)
+  {
+    this._saveSettings = value;
+    this.localStorageService.set('saveSettings', value);
   }
 
   get name(): string
@@ -57,7 +80,36 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
   set name(value: string)
   {
     this._name = value;
-    this.localStorageService.set('name', value);
+    if(!this.saveSettings)
+    {
+      this.localStorageService.remove('name');
+    }
+    else{
+      this.localStorageService.set('name', value);
+    }
+
+  }
+
+  get speakWords(): boolean
+  {
+    return this._speakWords;
+  }
+
+  set speakWords(value: boolean)
+  {
+    this._speakWords = value;
+    this.localStorageService.set('speakWords', value);
+  }
+
+  get trainingMode(): boolean
+  {
+    return this._trainingMode;
+  }
+
+  set trainingMode(value: boolean)
+  {
+    this._trainingMode = value;
+    this.localStorageService.set('trainingMode', value);
   }
 
   constructor(
@@ -66,9 +118,23 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
     private localStorageService: LocalStorageService) {
    // this.buttonsState = Array[true];
     // this.buttonsState
+    this.saveSettings = this.loadBooleanFromStorage('saveSettings');
     this.name = this.localStorageService.get<string>('name');
     this.pin = this.localStorageService.get<string>('pin');
+    this.trainingMode = this.loadBooleanFromStorage('trainingMode');
+    this.speakWords = this.loadBooleanFromStorage('speakWords');
+    this.trainingModeToggle();
 
+  }
+
+  private loadBooleanFromStorage(name: string) : boolean
+  {
+    var boolVal = this.localStorageService.get<boolean>(name);
+    if(boolVal != null)
+    {
+      return boolVal;
+    }
+    return false;
   }
 
 
@@ -83,15 +149,19 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
   openDialog(): void {
     let dialogRef = this.dialog.open(SettingsComponent, {
-      width: '250px',
-      data: { name: this.name, pin: this.pin }
+      width: '265px',
+      data: { name: this.name, pin: this.pin, saveSettings : this.saveSettings }
     });
 
     dialogRef.afterClosed().subscribe(result => {
 
       if(result) {
+        this.saveSettings = result.saveSettings;
         this.pin = result.pin;
         this.name = result.name;
+
+        this.curentEnteredValue = '0';
+        this.trainingModeToggle();
       }
     });
   }
@@ -111,14 +181,11 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
   {
     this.disabled = !this.disabled;
     this.setAllButtons(!this.disabled);
-    // var utterThis = new SpeechSynthesisUtterance(RandomSaying.RandomFun());
-    // this.synth.speak(utterThis);
   }
 
   numberPush(num: number) {
     this.vibrate(200);
     this.AddNumber(num.toString());
-    console.log(num);
   }
 
   clearPush() {
@@ -171,7 +238,11 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
   trainingModeToggle()
   {
-    this.trainingMode = !this.trainingMode;
+    if(this.pin == null)
+    {
+      this.setAllButtons(true);
+      return;
+    }
 
     if(this.trainingMode)
     {
@@ -184,7 +255,7 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
   private processTrainingMode()
   {
-      if(this.trainingMode)
+      if(this.trainingMode && this.pin != null)
       {
           if(this.isPinCorrect)
           {
@@ -234,7 +305,11 @@ export class LunchPadComponent implements OnInit, AfterViewInit {
 
   private get isPinCorrect(): boolean
   {
-          return (this.curentEnteredValue.toLowerCase() === this.pin.toLowerCase());
+    if(this.curentEnteredValue == null ||  this.pin == null)
+    {
+      return false;
+    }
+    return (this.curentEnteredValue.toLowerCase() === this.pin.toLowerCase());
   }
 
 

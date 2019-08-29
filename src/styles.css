@@ -132,4 +132,7 @@ html, body, .viewport {
             -ms-flex: 1;
                 flex: 1;
       }
-
+.saveTooltip
+      {
+        font-size: 14px !important;
+      }

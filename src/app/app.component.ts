@@ -13,7 +13,7 @@ export class AppComponent {
   options: AlertSettings  = {
     overlay: true,
     duration: 0,
-    showCloseButton: false,
+    showCloseButton: true,
     overlayClickToClose : true
 
   };

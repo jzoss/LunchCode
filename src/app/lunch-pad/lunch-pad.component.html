@@ -14,10 +14,10 @@
       [checked]="speakWords">Speak
   </mat-slide-toggle></mat-grid-tile>
     <mat-grid-tile>
-      <mat-slide-toggle  (change) = "trainingModeToggle()"
+      <mat-slide-toggle [(ngModel)]="trainingMode"  (change) = "trainingModeToggle()"
       class="example-margin"
       [color]="color"
-      [checked]="checked">
+      [checked]="trainingMode">
   </mat-slide-toggle>Training Mode</mat-grid-tile>
     <!-- <mat-grid-tile colspan ="3">
       <div class="display-number">{{curentEnteredValue}}</div>
