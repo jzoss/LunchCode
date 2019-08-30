@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1567189797395,
+  "timestamp": 1567191035046,
   "index": "/LunchCode/index.html",
   "assetGroups": [
     {
@@ -16,7 +16,7 @@
         "/LunchCode/polyfills-es5.85c69391fd72afab3d0b.js",
         "/LunchCode/runtime-es2015.5bc68c0dd8cf137fbe82.js",
         "/LunchCode/runtime-es5.ee0aae13fb762b150814.js",
-        "/LunchCode/styles.6fc94b432e03a0cef676.css"
+        "/LunchCode/styles.c9af3adfb51e6b4563d9.css"
       ],
       "patterns": []
     },
@@ -102,14 +102,14 @@
     "/LunchCode/assets/icons/ms-icon-310x310.png": "d5090cbab6ab9a5c9eb2d04e3ab4836345d071f4",
     "/LunchCode/assets/icons/ms-icon-70x70.png": "8281a1fc2b1312f8fb6c24baa2081d341641828e",
     "/LunchCode/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/LunchCode/index.html": "fb02331cc1d45acb9bf805316d819530b41a54de",
+    "/LunchCode/index.html": "56e3c726a8637ede79cc6fa38a20ed3fc92c56f7",
     "/LunchCode/main-es2015.a00e1ceef8bcaa9aa95d.js": "2ccd35d75d4dd87f6efd3f609bcfa9b12e9da8a6",
     "/LunchCode/main-es5.8a44ac9815d98acbd1ed.js": "44610d5c223ba49d88bd079b5e077f475ea1b49e",
     "/LunchCode/polyfills-es2015.f33768b41566fc694d05.js": "50cf40a745f0f4bff87df5dc328ce89c736bfb80",
     "/LunchCode/polyfills-es5.85c69391fd72afab3d0b.js": "49d754d8b38e917ef3e7b3db5c50e0fdd8534530",
     "/LunchCode/runtime-es2015.5bc68c0dd8cf137fbe82.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "/LunchCode/runtime-es5.ee0aae13fb762b150814.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
-    "/LunchCode/styles.6fc94b432e03a0cef676.css": "ae6853a179d75ad155f1b5218b5520eb3ce875e3"
+    "/LunchCode/styles.c9af3adfb51e6b4563d9.css": "2a39459a3d0a9508e27a05846b6fe3d883efa259"
   },
   "navigationUrls": [
     {
