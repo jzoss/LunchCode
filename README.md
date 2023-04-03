@@ -9,3 +9,9 @@ Once the code is entered correcty it give the kid a silly random complement.
 
 To Deploy site. 
 ng run lunch-code:deploy --base-href=/LunchCode/
+
+
+
+See it in Action 
+
+https://jzoss.github.io/LunchCode/
